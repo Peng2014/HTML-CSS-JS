@@ -1,9 +1,9 @@
 # HTML-CSS-JS 原生练习
 
-* [按钮移入移出下拉菜单](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/1.%E6%8C%89%E9%92%AEonmouseover.html)     鼠标移出按钮或菜单后，菜单才会消失，事件流
+* [按钮移入移出下拉菜单](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/1.%E6%8C%89%E9%92%AEonmouseover.html)——鼠标移出按钮或菜单后，菜单才会消失，事件流
 * [控制DIV颜色和尺寸](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/2.控制DIV颜色和尺寸.html)
 * [改变文字大小](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/3.改变文字大小.html)
-* [模拟手机短信发送](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/4.模拟手机短信发送.html)
+* [模拟手机短信发送](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/4.模拟手机短信发送.html)——两个状态切换，定义一个布尔值，类似开关功能
 * [图片切换](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/5.图片切换.html)
-* [this的应用](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/6.this的应用.html)
+* [移动在不同的区域上会出现不同的内容](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/6.this的应用.html)——上下文this
 * [自动生成100个li](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/7.1自动生成100个li.html)
