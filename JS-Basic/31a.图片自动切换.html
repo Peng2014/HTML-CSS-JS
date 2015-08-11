@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			padding-left: 500px;
+
+		}
+		#wrap{
+			width: 500px;
+			height: 300px;
+		
+			border: 2px solid #aaa;
+			overflow: hidden;
+			position: relative;
+		}
+		#wrap img{
+			width: 500px;
+			height: 300px;
+		}
+		#wrap #pic1{
+			position: absolute;
+			left: 0;
+		}
+		#wrap #pic2{
+			position: absolute;
+			left: 500px;
+		}
+		
+	</style>
+	<script src='doMove.js'></script>
+	<script>
+		window.onload=function(){
+			
+			var oPic1=document.getElementById('pic1');
+			var oPic2=document.getElementById('pic2');
+			// var aPic=document.getElementsByTagName('img');
+			var timer=null;
+			var timer1=null;
+			var num=0;
+			var arr=[];
+			var pos=0;
+
+			timer=setTimeout(fnt,2000);
+			// timer=setInterval(fnt,4000);
+			
+			// fnt();
+
+			function fnt(){
+				timer=setTimeout(fnF,1000);
+				
+			}
+			
+			function fnF(){
+				doMove(oPic1,'left',25,-500,fnt1);
+			}
+
+
+			function fnt1(){
+				timer=setTimeout(fnF1,1000);
+			
+			}
+
+			function fnF1(){
+				doMove(oPic1,'left',75,500,fnt2);
+			}
+
+			function fnt2(){
+				timer=setTimeout(fnF2,1000);
+			}
+
+			function fnF2(){
+				doMove(oPic1,'left',25,0,fnt);
+			}
+
+
+			///////////////////////////////////////////////
+			timer1=setTimeout(fntb,2000);
+			// timer=setInterval(fnt,4000);
+			
+			// fnt();
+
+			function fntb(){
+				timer=setTimeout(fnFb,1000);
+				
+			}
+			
+			function fnFb(){
+				doMove(oPic2,'left',25,0,fnt1b);
+			}
+
+
+			function fnt1b(){
+				timer=setTimeout(fnF1b,1000);
+			
+			}
+
+			function fnF1b(){
+				doMove(oPic2,'left',25,-500,fnt2b);
+			}
+
+			function fnt2b(){
+				timer=setTimeout(fnF2b,1000);
+			}
+
+			function fnF2b(){
+				doMove(oPic2,'left',75,500,fntb);
+			}
+
+
+		}
+			
+			
+		
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<img src="31.imgs/1.jpg" alt="pic" id="pic1" />
+		<img src="31.imgs/2.jpg" alt="pic" id="pic2" />
+		
+	</div>
+</body>
+</html>

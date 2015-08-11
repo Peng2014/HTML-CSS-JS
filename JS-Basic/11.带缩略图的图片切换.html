@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,h2,ul,img{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 694px;
+			height: 554px;
+			background: url(11.imgs/bg.jpg) no-repeat;
+			
+			color: #21adc2;
+			font-family: "Microsoft YaHei";
+			text-align: center;
+			position: relative;
+		}
+		h2{
+			line-height: 37px;
+			
+			font-size: 25px;
+		}
+		#pic{
+			width: 663px;
+			height: 445px;
+			margin-top: 3px;
+		}
+		#ul{
+			position: absolute;
+			left: 50%;
+			top: 507px;
+			margin-left: -35px;
+		}
+		li{
+			position: relative;
+			float: left;
+			margin-right: 9px;
+			width: 13px;
+			height: 13px;
+			background: url(11.imgs/a.png);
+			list-style: none;
+		}
+		#ul .active{
+			background: url(11.imgs/b.png);
+		}
+		#ul img{
+			width: 87px;
+			height: 58px;
+			position: absolute;
+			left: -38px;
+			top: -66px;
+			display: none;
+		}
+		#pre{
+			position: absolute;
+			left: 10%;
+			top: 40%;
+			line-height: 40px;
+			text-align: center;
+			text-decoration: none;
+			width: 40px;
+			height: 40px;
+			color: #000000;
+			background: #ffffff;
+			opacity: 0.7;
+			filter:alpha(opacity=70);
+		}
+		#pre:hover{
+			opacity: 0.2;
+			filter:alpha(opacity=20);
+
+		}
+
+		#next{
+			position: absolute;
+			right:10%;
+			top: 40%;
+			line-height: 40px;
+			text-align: center;
+			text-decoration: none;
+			width: 40px;
+			height: 40px;
+			color: #000000;
+			background: #ffffff;
+			opacity: 0.7;
+			filter:alpha(opacity=70);
+		}
+		#next:hover{
+			opacity: 0.2;
+			filter:alpha(opacity=20);
+			
+		}
+	</style>
+
+	<script>
+		window.onload=function(){
+			var oWrap=document.getElementById('wrap');
+			var oPic=document.getElementById('pic');
+			var oUl=document.getElementById('ul');
+			var aLi=document.getElementsByTagName('li');
+			var aImg=oUl.getElementsByTagName('img');
+
+			var oPre=document.getElementById('pre');
+			var oNext=document.getElementById('next');
+
+
+			var arrUlr=['11.imgs/1.png','11.imgs/2.png','11.imgs/3.png','11.imgs/4.png'];
+			var length=arrUlr.length;
+
+			// for (var i = 0; i < length; i++) {
+			// 	oUl.innerHTML+="<li></li>";
+			// }
+			
+			var num=0;
+			aLi[num].className='active';
+			var oldLi=null;
+			oldLi=aLi[num];
+
+			for (var i = 0; i < length; i++) {
+				aLi[i].index=i;
+				 
+				aLi[i].onclick=function(){
+					num=this.index;
+					oPic.src=arrUlr[num];
+				// oldLi.className='';
+				// oldLi=this;
+				// this.className='active';
+					for (var i = 0; i < length; i++) {
+						aLi[i].className='';
+						this.className='active';
+
+					}
+				}
+
+				aLi[i].onmouseover=function(){
+					aImg[this.index].style.display="block";
+				}
+				aLi[i].onmouseout=function(){
+					aImg[this.index].style.display="none";
+				}
+			}
+
+
+			oNext.onclick=function(){
+				num++;
+				if (num>length-1) {
+					num=0;
+				}
+				oPic.src=arrUlr[num];
+				
+				for (var i = 0; i < length; i++) {
+						aLi[i].className='';
+											
+					}
+				aLi[num].className='active';
+
+			}
+
+			oPre.onclick=function(){
+				num--;
+				if (num<0) {
+					num=length-1;
+				}
+				oPic.src=arrUlr[num];
+
+				for (var i = 0; i < length; i++) {
+						aLi[i].className='';
+											
+					}
+				aLi[num].className='active';
+			}
+
+
+
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<h2>带缩略图的图片轮换</h2>
+		<a href="#" id="pre"><</a>
+		<a href="#" id="next">></a>
+		<img src="11.imgs/1.png" alt="pic" id="pic" />
+		<ul id="ul">
+			<li><img src="11.imgs/1.png" alt=""></li>
+			<li><img src="11.imgs/2.png" alt=""></li>
+			<li><img src="11.imgs/3.png" alt=""></li>
+			<li><img src="11.imgs/4.png" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>

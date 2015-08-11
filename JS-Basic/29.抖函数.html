@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img { width:100px; height:100px; position:absolute; top:200px; }
+
+	</style>
+	<script src='doMove.js'></script>
+	<script>
+			window.onload=function(){
+				var aImg=document.getElementsByTagName('img');
+
+
+				for ( var i=0; i<aImg.length; i++ ) {
+					aImg[i].style.left = 80+i*110 + 'px';
+
+					aImg[i].onmouseover=function(){
+						shake(this,'top');
+					}
+		
+				}
+
+			}
+
+			function shake(obj,attr,endFn){
+
+				var pos=parseInt(getStyle(obj,attr));
+				var fistPos=pos;
+
+				var arr=[];
+				var num=0;
+				var timer=null;
+
+				for (var i = 20; i > 0; i-=2) {
+					arr.push(i,-i);	
+				}
+				
+				arr.push(0);
+				clearInterval(obj.shake);
+				obj.style[attr]=fistPos+'px';
+				obj.shake=setInterval(function(){
+					obj.style[attr]=pos+arr[num]+'px';
+					num++;
+
+					if (num===arr.length) {
+						clearInterval(obj.shake);
+						endFn&&endFn();
+					};
+				},50);
+
+			}
+	</script>
+</head>
+<body>
+	<div>
+		<img src="29.imgs/1.jpg" alt="pic" />
+		<img src="29.imgs/2.jpg" alt="pic" />
+		<img src="29.imgs/3.jpg" alt="pic" />
+		<img src="29.imgs/4.jpg" alt="pic" />
+		<img src="29.imgs/5.jpg" alt="pic" />
+		<img src="29.imgs/6.jpg" alt="pic" />
+		<img src="29.imgs/7.jpg" alt="pic" />
+		<img src="29.imgs/8.jpg" alt="pic" />
+	</div>
+</body>
+</html>

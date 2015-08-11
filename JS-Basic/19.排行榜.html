@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,span,p,h2,h3,h4,a,img{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#wrap{
+			width: 255px;
+			margin: 10px auto;
+			background-color: #dee7e7;
+			padding: 6px;
+			font-size: 12px;
+			font-family: 'Microsoft YaHei';
+			color: #393131;
+		}
+		#head{
+			height: 31px;
+			border-bottom: 1px solid #94bdd6;
+			position: relative;
+		}
+		#head h3{
+			font-size: 18px;
+			font-family: '宋体';
+			color: #295263;
+			line-height: 25px;
+			padding-left: 13px;
+		}
+		#head ul{
+			position: absolute;
+			right: 0;
+			bottom: -1px; 
+			border-right: 1px solid #94bdd6;
+			border-top: 1px solid #94bdd6;
+		}
+		#head li{
+			float: left;
+		}
+		#head a{
+			display: block;
+			width: 35px;
+			height: 24px;
+			color: #185273;
+			line-height: 24px;
+			text-align: center;
+			border-left: 1px solid #94bdd6;
+			border-bottom: 1px solid #94bdd6;
+		}
+		#head .active{
+			color: #000000;
+			font-weight: bold;
+			background: #ffffff;
+			border-bottom: 1px solid #ffffff;
+		}
+		#head a:hover{
+			color: #000000;
+			font-weight: bold;
+			background: #ffffff;
+			border-bottom: 1px solid #ffffff;
+		}
+		.list li{
+			line-height: 13px;
+			border-bottom: 1px dotted #ffffff;
+			padding: 7px;
+		}
+		
+		.list li a{
+			font-size: 11px;
+			color: #393131;
+		}
+		.list li span{
+			font-size: 10px;
+			font-weight: bolder;
+			background: #21638c;
+			color: #ffffff;
+			display: inline-block;
+			width: 17px;
+			height: 13px;
+			line-height: 13px;
+			text-align: center;
+			margin-right: 10px;
+			
+		}
+		
+		.list .hover{
+			height: 66px;
+			background: #ffffff;
+			padding: 7px;
+
+		}
+		.list .hover img{
+			width: 80px;
+			height: 60px;
+			padding: 2px;
+			border: 1px solid #94bdd6;
+			vertical-align: top;
+		}
+		.list .hover span{
+			margin-top: 3px;
+			margin-right: 10px;
+		}
+		.list .hoverli{
+			width: 213px;
+			height: 66px;
+			float: right;
+			position: relative;
+			display: none;
+		}
+		.list .hoverli p{
+			float: right;
+			line-height: 18px;
+			font-size: 12px;
+			color: #185273;
+			width: 107px;
+			padding-right: 12px;
+		}
+		.list .hoverli #start img{
+			width: 41px;
+			height: 21px;
+			padding: 0;
+			border: none;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+		#footer{
+			height: 20px;
+			position: relative;
+		}
+		#footer a{
+			font-size: 11px;
+			color: #393131;
+			line-height: 15px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+		#list1{
+			display: none;
+		}
+		#list2{
+			display: none;
+		}
+	</style>
+
+	<script>
+		window.onload=function(){
+			
+			Tab();
+
+		}
+		function fn1 (id) {
+			
+			var oList=document.getElementById(id);
+			var aLi=oList.getElementsByTagName('li');
+			oList.style.display='block';
+			var length=aLi.length;
+			for (var i = 0; i < length; i++) {
+				aLi[i].onmouseover=function(){
+					this.getElementsByTagName('a')[0].style.display='none';
+					this.getElementsByTagName('div')[0].style.display='block';
+					this.className='hover';
+				}
+				aLi[i].onmouseout=function(){
+					this.getElementsByTagName('a')[0].style.display='inline';
+					this.getElementsByTagName('div')[0].style.display='none';
+					this.className='';
+				}
+			}
+
+			
+
+		}
+
+		function Tab(){
+			var oHead=document.getElementById('head');
+			var aA=oHead.getElementsByTagName('a');
+			var aLength=aA.length;
+			var arrId=['list','list1','list2'];
+
+			//初始化
+			aA[0].className='active';
+			fn1('list');
+			for (var i = 0; i < aLength; i++) {
+				aA[i].index=i;
+				aA[i].onclick=function(){
+					for (var i = 0; i < aLength; i++) {
+						aA[i].className='';
+					}
+					this.className='active';
+					fn1('arrId[this.index]');
+				}	 
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="head">
+			<h3>观看排行榜</h3>
+			<ul>
+				<li>
+					<a href="#" >每日</a>
+				</li>
+				<li>
+					<a href="#">每周</a>
+				</li>
+				<li>
+					<a href="#">全部</a>
+				</li>
+			</ul>
+			
+		</div>
+		<div id="content">
+			<ul id="list" class="list">
+			<li >
+				<span>1</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>2</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>3</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>4</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>5</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>6</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>7</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>8</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>9</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>10</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>   
+		</ul>
+		<ul id="list1" class="list">
+			<li >
+				<span>1</span><a href="#"> 2密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>2</span><a href="#"> 2密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>3</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>4</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>5</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>6</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>7</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li> 
+			<li >
+				<span>8</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>9</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>
+			<li >
+				<span>10</span><a href="#"> 解密：关于地球与人类的一千零一问</a>
+				<div class="hoverli"><a href="#"><img src="19.imgs/pic1.jpg" alt="" /></a><p>展现普通人的曲折命运和动人故事。</p><a href="#" id="start"><img src="19.imgs/star.gif" alt="pic" /></a></div>
+			</li>   
+		</ul>
+		</div>
+		<div id="footer">
+			<a href="#">更多>></a>
+		</div>
+	</div>
+</body>
+</html>

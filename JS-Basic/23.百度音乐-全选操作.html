@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,li,span,strong,input{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			padding: 20px;
+		}
+		li{
+			list-style: none;
+			width: 312px;
+			height: 30px;
+			/*background:#efefef;*/
+			border-top: 1px solid #ffffff; 
+			line-height: 30px; 
+			font-size: 12px;
+		}
+		#list li:hover{
+			background:#efefef;
+		}
+		#list .active{
+			background:#efefef;
+		}
+		input{
+			width: 12px;
+			height: 12px;
+			margin-left: 17px;
+			margin-right: 15px;
+			margin-top: 9px;
+		}
+		strong{
+			display: inline-block;
+			width: 163px;
+			font-weight: normal;
+		}
+		ul{
+			border-bottom: 1px solid #dedede;
+			width: 312px;
+		}
+		#div strong{
+			font-size: 12px;
+		}
+	</style>
+
+	<script>
+		window.onload=function(){
+
+			var oList=document.getElementById('list');
+			var aLi=oList.getElementsByTagName('li');
+
+			var aIpt=oList.getElementsByTagName('input');
+			var length=aLi.length;
+			
+			var oLast=document.getElementById('last');
+
+
+			for (var i = 0; i < aIpt.length; i++) {
+				aIpt[i].index=i;
+				aIpt[i].onclick=function(){
+					if (this.checked) {
+							aLi[this.index].className='active';
+						}else{
+							aLi[this.index].className='';
+						}
+
+					oLast.checked=true;
+
+					for (var i = 0; i < aIpt.length; i++) {
+						if(!aIpt[i].checked){
+							oLast.checked=false;
+							break;
+						}
+					}
+
+					}
+
+				
+				}
+
+			oLast.onclick=function(){
+				if (oLast.checked) {
+					oLast.checked=true;
+					for (var i = 0; i < aIpt.length; i++) {
+						aIpt[i].checked=true;
+						aLi[i].className='active';
+					}
+				}else{
+					oLast.checked=false;
+					for (var i = 0; i < aIpt.length; i++) {
+						aIpt[i].checked=false;
+						aLi[i].className='';
+					}
+				}
+				
+			}
+	}
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="list">
+			<li>
+				<input type="checkbox" /><strong>私奔</strong><span>梁博</span>
+			</li>
+			<li>
+				<input type="checkbox" /><strong>北京北京</strong><span>梁博,黄勇</span>
+			</li>
+			<li>
+				<input type="checkbox" /><strong>我爱你中国</strong><span>梁博</span>
+			</li>
+			<li>
+				<input type="checkbox" /><strong>花火</strong><span>梁博</span>
+			</li>
+			<li>
+				<input type="checkbox" /><strong>回来</strong><span>梁博</span>
+			</li>
+			<li>
+				<input type="checkbox" /><strong>爱要有你才完美</strong><span>梁博,那英</span>
+			</li>
+
+		</ul>
+		<div id="div">
+			<input type="checkbox" id="last" /><strong>全选</strong>
+		</div>
+	</div>
+</body>
+</html>

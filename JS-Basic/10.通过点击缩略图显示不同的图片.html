@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,img,span{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #333333;
+		}
+		li{
+			list-style: none;
+		}
+		#wrap{
+			width: 400px;
+			height: 500px;
+			margin: 0 auto;
+			position: relative;
+		}
+		#num{
+			position: absolute;
+			width: 400px;
+			height: 30px;
+			background-color: #000000;
+			color: #ffffff;
+			font-size: 12px;
+			font-family: "Microsoft YaHei";
+			line-height: 30px;
+			text-align: center;
+			display: block;
+		}
+		#text{
+			position: absolute;
+			bottom: 0;
+			width: 400px;
+			height: 30px;
+			background-color: #000000;
+			color: #ffffff;
+			font-size: 17px;
+			font-family: "Microsoft YaHei";
+			line-height: 30px;
+			text-align: center;
+			display: block;
+		}
+		#pic{
+			width: 400px;
+			height: 500px;
+		}
+		#ul{
+			position: absolute;
+			left: 410px;
+			top:0;
+		}
+		#ul li{
+			width: 40px;
+			height: 40px;
+			margin-bottom: 4px;
+			background-color: #666666;
+			
+		}
+		#ul .active{
+			background: #ffcc33;
+		}
+	</style>
+	<script>
+
+		window.onload=function(){
+			
+			var arrUlr=['10.imgs/1.png','10.imgs/2.png','10.imgs/3.png','10.imgs/4.png'];
+			var arrText=['小宠物','动漫魔女','动漫女','机器人'];
+
+			var num=0;
+
+			var oNum=document.getElementById('num');
+			var oText=document.getElementById('text');
+			var oPic=document.getElementById('pic');
+			var oUl=document.getElementById('ul');
+
+			var aLi=document.getElementsByTagName('li');
+
+
+			var length=arrUlr.length;
+			//根据图片数量添加li
+			for (var i = 0; i < length; i++) {
+				oUl.innerHTML+='<li></li>';
+			}
+
+
+			//初始化
+			
+			oPic.src=arrUlr[num];
+			oNum.innerHTML=num+1+" / "+length;
+			oText.innerHTML=arrText[num];
+			aLi[num].className='active';
+			
+			var oldLi='';
+			oldLi=aLi[num]; //第一个初始化的li
+
+			
+			for (var i = 0; i < length; i++) {
+				
+				//添加点击事件 切换图片
+				aLi[i].index=i;
+	
+				aLi[i].onclick=function(){
+					oPic.src=arrUlr[this.index];
+					oNum.innerHTML=this.index+1+" / "+length;
+					oText.innerHTML=arrText[this.index];
+				
+
+				//是颜色跟着点击走
+				//思路一：全部清空，添加当前 active
+				
+				// for (var i = 0; i < length; i++) {
+				// 	aLi[i].className='';
+				// 	this.className='active';
+				// }
+
+				//思路二，清空上一个的点击，添加当前active 
+				//(如果数量太多，则全部清空效率不高)
+				
+					oldLi.className='';   //第一个初始化的li为空 
+					oldLi=this;			  //然后把当前的this转给上一个oldLi
+					this.className='active';
+				}
+			}
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<span id="num">数量正在统计</span>
+		<span id="text">文字正在统计</span>
+		<img src="#" alt="pic1" id="pic" />
+		<ul id="ul">
+			
+		</ul>
+	</div>
+</body>
+</html>

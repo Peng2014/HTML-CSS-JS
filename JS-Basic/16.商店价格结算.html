@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,li,h2,h3,p,span{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		#wrap{
+			width: 400px;
+			margin: 50px auto;
+			border: 1px solid #333;
+			padding: 20px;
+			font-family: "Microsoft YaHei";
+		}
+		#wrap h2{
+			text-align: center;
+			font-size: 18px;
+			line-height: 34px;
+			margin-bottom: 5px;
+			/*background-color: red;*/
+
+		}
+		#list li{
+			line-height: 30px;
+		}
+
+		#list li p{
+			display: inline-block;
+		}
+		#list li input{
+			margin: 0 4px;
+		}
+		#list ul{
+			margin-bottom: 5px;
+		}
+		#wrap h3{
+			/*text-align: center;*/
+			font-size: 16px;
+			line-height: 25px;
+			margin-left: 4px;
+			/*background-color: red;*/
+
+		}
+		#list strong{
+			font-weight: normal;
+			margin: 0 4px;
+		}
+		#list em{
+			font-style: normal;
+			margin: 0 4px;
+		}
+		#list span{
+			margin: 0 4px;
+		}
+	</style>
+	<script>
+	window.onload=function(){
+		fn('li1','12.5');
+		fn('li2','10.5');
+		fn('li3','8.5');
+		fn('li4','8');
+		fn('li5','14.5');
+		total ();
+	}
+
+	function fn (id,price) {
+		var oId=document.getElementById(id);
+		var oNum=oId.getElementsByTagName('span')[0];
+		var oPrice=oId.getElementsByTagName('strong')[0];
+		var oTotal=oId.getElementsByTagName('em')[0];
+
+		var oMinus=oId.getElementsByTagName('input')[0];
+		var oAdd=oId.getElementsByTagName('input')[1];
+
+		var num=0;
+		oPrice.innerHTML=price;
+
+		oAdd.onclick=function(){
+			num++;
+			oNum.innerHTML=num;
+			oTotal.innerHTML=num*price;
+			total ();
+		}
+		oMinus.onclick=function(){
+			num--;
+			if (num<0) {
+				num=0
+				alert('商品数量不能小于0;')
+			}
+			oNum.innerHTML=num;
+			oTotal.innerHTML=num*price;
+			total ();
+		}
+	}
+
+	function total () {
+		var oId=document.getElementById('total');
+		var oAllTotal=oId.getElementsByTagName('em')[0];
+		var oAllNum=oId.getElementsByTagName('span')[0];
+		var oMaxPrice=oId.getElementsByTagName('strong')[0];
+
+		var oId0=document.getElementById('list');
+		var arrNum=oId0.getElementsByTagName('span');
+		var arrPrice=oId0.getElementsByTagName('strong');
+		var arrTotal=oId0.getElementsByTagName('em');
+
+		var length=arrNum.length;
+		var allNum=0;
+		var allTotal=0;
+		var maxPrice=0;
+
+		for (var i = 0; i < length; i++) {
+			allNum+=Number(arrNum[i].innerHTML);
+			allTotal+=Number(arrTotal[i].innerHTML);
+			if (Number(arrPrice[i].innerHTML)>maxPrice) {
+				maxPrice=arrPrice[i].innerHTML;
+			}
+		}
+
+		oAllNum.innerHTML=allNum;
+		oAllTotal.innerHTML=allTotal;
+		oMaxPrice.innerHTML=maxPrice;
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+	<div id="list">
+		<h2>商品价格结算</h2>
+		<ul >
+			<li id="li1">
+				<input type="button" value="-" /><span>0</span><input type="button" value="+" /><p>单价：<strong>12.5</strong>元 小计：<em>0</em>元</p>
+			</li>
+			<li  id="li2">
+				<input type="button" value="-" /><span>0</span><input type="button" value="+" /><p>单价：<strong>12.5</strong>元 小计：<em>0</em>元</p>
+			</li>
+			<li  id="li3">
+				<input type="button" value="-" /><span>0</span><input type="button" value="+" /><p>单价：<strong>12.5</strong>元 小计：<em>0</em>元</p>
+			</li>
+			<li  id="li4">
+				<input type="button" value="-" /><span>0</span><input type="button" value="+" /><p>单价：<strong>12.5</strong>元 小计：<em>0</em>元</p>
+			</li>
+			<li  id="li5">
+				<input type="button" value="-" /><span>0</span><input type="button" value="+" /><p>单价：<strong>12.5</strong>元 小计：<em>0</em>元</p>
+			</li>
+		</ul>
+		
+	</div>
+		<div id="total">
+		<h3>商品合计共：<span>0</span>件，共花费了：<em>0</em>元</h3>
+		<h3>其中最贵的商品单价是：<strong>0</strong>元</h3>
+		</div>
+	</div>
+</body>
+</html>

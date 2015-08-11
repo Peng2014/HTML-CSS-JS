@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,a,img{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+
+		body{
+			padding: 30px;
+		}
+		img{
+			width: 184px;
+			height: 209px;
+			padding-left: 5px;
+		}
+		#wrap{
+			width: 292px;
+			height: 208px;
+			padding: 4px 5px 6px 1px;
+			border: 1px solid #ff6300;
+		}
+		#wrap a{
+			width: 48px;
+			height: 26px;
+			display: block;
+			line-height: 26px;
+			text-align: center;
+			font-size: 10px;
+			font-family: 'Microsoft YaHei';
+			color: #424242;
+			border: 1px solid #ffadad;
+			margin-bottom: 2px;
+		}
+		#wrap a:hover{
+			color: #ffffff;
+			background: #ff637b;
+		}
+		#wrap .active{
+			color: #ffffff;
+			background: #ff637b;
+		}
+		#wrap #left{
+			float: left;
+		}
+		#wrap #right{
+			float: right;
+		}
+	</style>
+
+	<script>
+
+		window.onload=function(){
+
+			var oWrap=document.getElementById('wrap');
+			var oPic=document.getElementById('pic');
+
+			var aLa=oWrap.getElementsByTagName('a');
+
+			var arrUrl=['27.imgs/1.png','27.imgs/2.png','27.imgs/3.png','27.imgs/4.png','27.imgs/5.png','27.imgs/6.png','27.imgs/7.png','27.imgs/8.png','27.imgs/9.png','27.imgs/10.png','27.imgs/11.png','27.imgs/12.png','27.imgs/13.png','27.imgs/14.png'];
+
+			//初始化
+			aLa[0].className='active';
+			oPic.src=arrUrl[0];
+
+			for (var i = 0; i < aLa.length; i++) {
+				aLa[i].index=i;
+				aLa[i].onmouseover=function(){
+					for (var i = 0; i < aLa.length; i++) {
+						aLa[i].className='';
+					}
+					aLa[this.index].className='active';
+					oPic.src=arrUrl[this.index];
+				}
+			}
+
+			//正序循环
+			// var num=0;
+			// var n=0;
+			// var timer=null;
+
+			// function fnT(){
+			// 	num++;
+			// 	n=num%aLa.length;
+			// 	for (var i = 0; i < aLa.length; i++) {
+			// 		aLa[i].className='';
+			// 	}
+
+			// 	aLa[n].className='active';
+			// 	oPic.src=arrUrl[n];
+			// }
+
+			// timer=setInterval(fnT,1000);
+			// oWrap.onmouseover=function(){
+			// 	clearInterval(timer);
+			// }
+			// oWrap.onmouseout=function(){
+			// 	timer=setInterval(fnT,1000);
+			// }
+
+
+
+			//倒序循环
+			var num=0;
+			var n=0;
+			// var m=0;
+			var timer=null;
+
+			function fnT(){
+				num++;
+				n=num%(aLa.length*2);
+				for (var i = 0; i < aLa.length; i++) {
+					aLa[i].className='';
+				}
+				if (n<aLa.length) {
+					n=n;
+				}else{
+					n=aLa.length-(n-aLa.length)-1;
+				}
+				aLa[n].className='active';
+					oPic.src=arrUrl[n];
+				
+			}
+
+			timer=setInterval(fnT,1000);
+			oWrap.onmouseover=function(){
+				clearInterval(timer);
+			}
+			oWrap.onmouseout=function(){
+				timer=setInterval(fnT,1000);
+			}
+
+
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="left">
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+		</ul>
+		<ul id="right">
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+			<li><a href="#">广告1</a></li>
+		</ul>
+		<img src="27.imgs/1.png" alt="pic" id="pic" />
+	</div>
+</body>
+</html>

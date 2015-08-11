@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		div{
+			position: absolute;
+			top: 100px;
+			border: 1px solid #000;
+			height: 40px;
+			width: 400px;
+			
+		}
+		span{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin: 0;
+			font-size: 20px;
+			/*background: red;*/
+			padding: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+		}
+	</style>
+	<script src='doMove.js'></script>
+	
+	<script>
+
+		window.onload=function(){
+			var aSpan=document.getElementsByTagName('span');
+			var oWrap=document.getElementById('wrap');
+			var num=0;
+			var timer=null;
+			var timer1=null;
+
+			for (var i = 0; i < aSpan.length; i++) {
+				aSpan[i].style.left=i*40+'px';
+			}
+
+			// alert(getStyle(oWrap,'opacity'));
+			oWrap.onclick=function(){
+
+				num=0;
+				timer=setInterval(function(){
+				
+				// alert(getStyle(aSpan[num],opacity));
+				
+				doMove(aSpan[num],'top',4,-100);
+				oPacity(aSpan[num],0.1,0);
+				// Opacity();
+				num++;
+				if (num===aSpan.length) {
+					clearInterval(timer);
+				};
+			},200);
+		}
+
+
+			
+
+
+				function oPacity ( obj, dir, target, endFn ) {
+			
+				// dir = (getStyle( obj, 'opacity' ) < target) ? dir : -dir;
+			
+				clearInterval( obj.timer1 );
+			
+				obj.timer1 = setInterval(function () {
+				
+				var speed = getStyle( obj, 'opacity' ) - dir;			// 步长
+				
+				if (  speed < target  ) {
+					speed = target;
+				}
+				
+				obj.style.opacity = speed;
+				
+				
+				
+			}, 70);
+		}
+	}
+
+		
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<span>+1</span><span>+1</span><span>+1</span><span>+1</span><span>+1</span><span>+1</span><span>+1</span><span>+1</span><span>+1</span><span>+1</span>
+	</div>
+</body>
+</html>

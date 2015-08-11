@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			list-style: none;
+			display: inline-block;
+		}
+
+	</style>
+
+	<script>
+		window.onload=function(){
+			var aImg=document.getElementsByTagName('img');
+			
+			var length=aImg.length;
+			
+
+			for (var i = 0; i < length; i++) {
+				
+				aImg[i].onOff=false;
+				
+				aImg[i].onclick=function(){
+					if (this.onOff) {
+						this.src="8.imgs/2.jpg";
+						this.onOff=false;
+					}else{
+						this.src="8.imgs/1.jpg";
+						this.onOff=true;
+					}
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<ul id="ul">
+		<li><img src="8.imgs/2.jpg" alt="pic" /></li>
+		<li><img src="8.imgs/2.jpg" alt="pic" /></li>
+		<li><img src="8.imgs/2.jpg" alt="pic" /></li>
+	</ul>
+</body>
+</html>
