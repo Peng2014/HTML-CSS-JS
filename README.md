@@ -1,6 +1,6 @@
 # HTML-CSS-JS 原生练习
 
-* [按钮onmouserover](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/1.%E6%8C%89%E9%92%AEonmouseover.html)
+* [按钮移入移出下拉菜单](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/1.%E6%8C%89%E9%92%AEonmouseover.html)     鼠标移出按钮或菜单后，菜单才会消失，事件流
 * [控制DIV颜色和尺寸](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/2.控制DIV颜色和尺寸.html)
 * [改变文字大小](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/3.改变文字大小.html)
 * [模拟手机短信发送](http://peng2014.github.io/HTML-CSS-JS/JS-Basic/4.模拟手机短信发送.html)
