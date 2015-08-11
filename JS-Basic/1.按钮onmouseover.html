@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			padding: 60px;
+		}
+		ul,li,a{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			display: block;
+			color: #000000;
+			font-size: 17px;
+			
+			
+		}
+		.list li,.hideUl li{
+			
+			width: 82px;
+			height: 32px;
+			line-height: 32px;
+			text-align: center;
+		}
+		.list li{
+			background-color: #f1f1f1;
+		}
+		.hideUl li{
+			background-color: #ffff99;
+		}
+
+		.list ,.hideUl {
+			border: 1px solid #333333;
+			width: 82px;
+		}
+		
+		
+		.hideUl{
+			display: none;
+			margin-left: -1px;
+		}
+
+		.hideUl a:hover{
+			background-color: yellow;
+		}
+	</style>
+	<script>
+		window.onload=function () {
+			var oBnt=document.getElementById('obnt');
+			var oBnt2=document.getElementById('obnt2');
+			var oBnt3=document.getElementById('wei');
+
+			oBnt.onmouseover = show;
+
+			oBnt.onmouseout = hide;
+			
+			function show() {
+					oBnt3.style.backgroundColor="yellow";
+					oBnt2.style.display="block";
+			
+			}
+
+			function hide(){
+					oBnt2.style.display="none";
+					oBnt3.style.backgroundColor="#f1f1f1";
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<ul class="list" id="obnt">
+		<li >
+			<a href="#" id="wei" >微博</a>
+				<ul class="hideUl" id="obnt2">
+				<li><a href="#">私信</a></li>
+				<li><a href="#">评论</a></li>
+				<li><a href="#">@我</a></li>
+			</ul>
+		</li>
+	</ul>	
+	
+	
+	
+</body>
+</html>
