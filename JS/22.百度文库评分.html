@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,h3,a,img{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		body{
+			padding: 20px;
+		}
+		.clear{
+			zoom: 1;
+		}
+		.clear:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		#wrap{
+			border-top: 1px solid #000000;
+			padding-top: 12px;
+			width:  504px;
+		}
+		#wrap span{
+			float: left;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 40px;
+			padding-left: 15px;
+			background: url(22.imgs/bg1.gif) no-repeat left 7px top 6px;
+
+		}
+		#wrap #tui{
+			float: left;
+			color: red;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 40px;
+			padding-left: 0;
+			background: none;
+			display: none;
+		}
+		#wrap ul{
+			float: left;
+			padding-right: 10px;
+			/*background-color: red;	*/
+		}
+		#list li {
+			float: left;
+			
+			line-height: 32px;
+			padding-top: 8px;
+		}
+		#list li a{
+
+			/*margin-top: 8px;*/
+		}
+		#list li img{
+			padding-left: 5px;	
+		}
+		/*#pic{
+			display: none;
+		}*/
+	</style>
+	<script>
+			window.onload=function(){
+					tabfn();
+			}
+			function tabfn(){
+				var oList=document.getElementById('list');
+				var oPic=document.getElementById('pic');
+				var oTui=document.getElementById('tui');
+				var aImg=oList.getElementsByTagName('img');
+				var length=aImg.length;
+				var arrText=['很差','较差','一般','推荐','力荐'];
+				var arrUrl=['22.imgs/bad.png','22.imgs/bad.png','22.imgs/smile.png','22.imgs/smile.png','22.imgs/smile.png',]
+				var onOff=false; //设置状态判断标记
+				var onNum=0;//记录评分结果
+
+				for (var i = 0; i < length; i++) {
+					aImg[i].index=i;
+					
+
+					aImg[i].onmouseover=function(){
+						for (var j = 0; j < this.index+1; j++) {
+							aImg[j].src=arrUrl[j];
+
+						}
+						for (var j = this.index+1; j < length; j++) {
+							aImg[j].src='22.imgs/bg.gif';
+						}
+
+						oTui.innerHTML=arrText[this.index];
+						oPic.style.display='none';
+						oTui.style.display='inline';
+					}
+
+					aImg[i].onmouseout=function(){
+						
+						if (onOff) {
+							for (var j = 0; j < onNum+1; j++) {
+							aImg[j].src=arrUrl[j];
+							}
+							for (var j = onNum+1; j < length; j++) {
+								aImg[j].src='22.imgs/bg.gif';
+							}
+							oTui.innerHTML=arrText[onNum];
+							oPic.style.display='none';
+							oTui.style.display='inline';
+						}else{
+							for (var j = 0; j < length; j++) {
+							aImg[j].src='22.imgs/bg.gif';
+							}
+							oPic.style.display='inline';
+							oTui.style.display='none';
+						}
+						
+					}
+
+					aImg[i].onclick=function(){
+						
+						//点击评分会记录移出后状态
+							onOff=true;
+						
+						for (var j = 0; j < this.index+1; j++) {
+							aImg[j].src=arrUrl[j];
+						}
+						for (var j = this.index+1; j < length; j++) {
+							aImg[j].src='22.imgs/bg.gif';
+						}
+						onNum=this.index;
+						oTui.innerHTML=arrText[this.index];
+						oPic.style.display='none';
+						oTui.style.display='inline';
+					}
+				}
+
+
+
+			}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<span>总体评价：</span>
+		<ul id="list" class="clear">
+			<li><a href="#"><img src="22.imgs/bg.gif" alt="pic"/></a></li>
+			<li><a href="#"><img src="22.imgs/bg.gif" alt="pic"/></a></li>
+			<li><a href="#"><img src="22.imgs/bg.gif" alt="pic"/></a></li>
+			<li><a href="#"><img src="22.imgs/bg.gif" alt="pic"/></a></li>
+			<li><a href="#"><img src="22.imgs/bg.gif" alt="pic"/></a></li>
+			
+		</ul><img src="22.imgs/bg2.png" alt="pic" id="pic" /><span id="tui">推荐</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,h3,span,strong,a{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			padding: 50px;
+		}
+		#header{
+			height: 24px;
+			width: 168px;
+			background: url(25.imgs/2.png) no-repeat;
+		}
+		#header h3{
+			line-height: 24px;
+			font-size: 11px;
+			font-weight: normal;
+			color: #ffffff;
+			padding-left: 10px;
+			display: inline-block;
+		}
+		#header a{
+			float: right;
+			line-height: 24px;
+			font-size: 11px;
+			color: #ffffff;
+			text-decoration: none;
+			padding-right: 11px;
+			background: url(25.imgs/3.png) no-repeat right 0;
+		}
+		#wrap{
+			border: 1px solid red;
+			width: 166px;
+			height: 426px;
+			position: relative;
+			overflow: hidden;
+			border: 1px solid #ced6d6;
+			
+		}
+		#ul{
+			padding: 0;
+			position: absolute;
+			margin: 0;
+		}
+		#ul li{
+			width: 148px;
+			height: 52px;
+			padding: 15px 8px 15px 10px;
+			border-bottom: 1px solid #bdbdbd;
+		}
+		#ul li img{
+			float: right;
+		}
+		#ul li strong{
+			float: left;
+			font-weight: normal;
+			width: 48px;
+			font-size: 11px;
+			text-align: left;
+		}
+		#ul li span{
+			float: left;
+			clear: left;
+			font-size: 8px;
+			color: #bdbdbd;
+			padding-top: 15px;
+		}
+		#up{
+			position: absolute;
+			width: 166px;
+			height: 20px;
+			bottom: 0px;
+			padding: 0;
+			margin: 0;
+
+		}
+		#down{
+			position: absolute;
+			width: 166px;
+			height: 20px;
+			top: 0;
+			padding: 0;
+			margin: 0;
+
+		}
+	</style>
+
+	<script>
+
+		window.onload=function(){
+			var oUp=document.getElementById('up');
+			var oDown=document.getElementById('down');
+			var oUl=document.getElementById('ul');
+			var num=0;
+			var timer=null;
+			var timer1=null;
+
+			oUp.onmousedown=up;
+			oUp.onmouseup=stop;
+
+			oDown.onmousedown=down;
+			oDown.onmouseup=stop1;
+
+			function up(){
+				timer=setInterval(function(){
+					num++;
+					if (num>10) {
+						num=10;
+					}
+					oUl.style.top=num+'px';
+				},10);
+			}
+			function down(){
+				timer1=setInterval(function(){
+					num--;
+					if (num<-250) {
+						num=-250;
+					}
+					oUl.style.top=num+'px';
+				},10);
+			}
+
+			function stop(){
+				clearInterval(timer);
+			}
+			function stop1(){
+				clearInterval(timer1);
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="header">
+		<h3>秒味课堂</h3><a href="#">>>更多</a>
+	</div>
+	<div id="wrap">
+		<ul id="ul">
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+			<li><strong>无线网络基础</strong><img src="25.imgs/1.png" alt="" /><span>3:00</span></li>
+		</ul>
+		<input type="button" value="down"  id="up" />
+		<input type="button" value="up" id="down" />
+	</div>
+	
+	
+</body>
+</html>

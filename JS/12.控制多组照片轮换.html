@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 885px;
+			height: 588px;
+			background: url(12.imgs/bg.jpg);
+			position: relative;
+		}
+		#img1{
+			position: absolute;
+			left: 61px;
+			top: 130px;
+			text-align: center;
+		}
+		#img2{
+			position: absolute;
+			left: 572px;
+			top: 130px;
+			text-align: center;
+		}
+		#pic1{
+			width: 448px;
+			height: 245px;
+		}
+		#pic2{
+			width: 246px;
+			height: 245px;
+		}
+		#input{
+			position: absolute;
+			left: 34px;
+			top: 72px;
+		}
+		#text1,#text2{
+			display: block;
+			font-size: 13px;
+			font-family: "Microsoft YaHei";
+			font-weight: bold;
+			line-height: 25px;
+
+		}
+		#text1a,#text2a{
+			display: block;
+			font-size: 9px;
+			font-family: "Microsoft YaHei";
+			text-align: left;
+			line-height: 25px;
+		}
+	</style>
+
+	<script>
+		window.onload=function(){
+			var oPrev=document.getElementById('prev');
+			var oNext=document.getElementById('next');
+			
+			var oPic1=document.getElementById('pic1');
+			var oPic2=document.getElementById('pic2');
+			var oText1=document.getElementById('text1');
+			var oText1a=document.getElementById('text1a');
+			var oText2=document.getElementById('text2');
+			var oText2a=document.getElementById('text2a');
+
+			var arrUrl=['12.imgs/1.png','12.imgs/2.png','12.imgs/3.png','12.imgs/4.png','12.imgs/5.png'];
+			var arrUrla=['12.imgs/a.png','12.imgs/b.png','12.imgs/c.png','12.imgs/d.png',];
+			
+			var length1=arrUrl.length;
+			var lengtha=arrUrla.length;
+			
+			var num1=0;
+			var numa=0;
+
+			oNext.onclick=function(){
+				num1++;
+				if (num1>length1-1) {
+					num1=0;
+				}
+				oPic1.src=arrUrl[num1];
+				oText1.innerHTML="第一组第"+(num1+1)+"张";
+				oText1a.innerHTML=num1+1+"/"+length1;
+
+				numa++;
+				if (numa>lengtha-1) {
+					numa=0;
+				}
+				oPic2.src=arrUrla[numa];
+				oText2.innerHTML='第二组第'+(numa+1)+'张';
+				oText2a.innerHTML=numa+1+'/'+lengtha;
+			}
+
+			oPrev.onclick=function(){
+				num1--;
+				if (num1<0) {
+					num1=length1-1;
+				}
+				oPic1.src=arrUrl[num1];
+				oText1.innerHTML="第一组第"+(num1+1)+"张";
+				oText1a.innerHTML=num1+1+"/"+length1;
+
+				numa--;
+				if (numa<0) {
+					numa=lengtha-1;
+				}
+				oPic2.src=arrUrla[numa];
+				oText2.innerHTML='第二组第'+(numa+1)+'张';
+				oText2a.innerHTML=numa+1+'/'+lengtha;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="input">
+			<input type="button" id="prev" value="上一组" />
+			<input type="button" id="next" value="下一组" />
+		</div>
+		
+		<div id="img1">
+			<img src="12.imgs/1.png" alt="pic" id="pic1" />
+			<span id="text1">第一组第1张</span>
+			<span id="text1a">1/5</span>
+		</div>
+		<div id="img2">
+			<img src="12.imgs/a.png" alt="pic" id="pic2" />
+			<span id="text2">第二组第1张</span>
+			<span id="text2a">1/4</span>
+		</div>
+	</div>
+</body>
+</html>

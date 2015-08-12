@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img { width:100px; height:100px; position:absolute; top:200px; }
+
+	</style>
+	<script ></script>
+	<script>
+			window.onload = function () {
+				var aImg = document.getElementsByTagName('img');
+				
+				for ( var i=0; i<aImg.length; i++ ) {
+					aImg[i].style.left = 80+i*110 + 'px';
+					
+					aImg[i].onmouseover = function () {
+						shake( this, 'top');
+					};
+				}
+			};
+
+			//获取当前元素位置属性
+			function getStyle ( obj, attr ) { return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle( obj )[attr]; }
+
+			function shake ( obj, attr, endFn ) {
+
+				if( obj.shaked ) { return; }  //判断上次抖动是否完成，如果未完成直接跳出函数
+				obj.shaked = true;
+
+
+				var pos = parseInt( getStyle(obj, attr) );	
+				var num = 0;
+				var timer = null;
+				var arr = [];	// 抖动本质，来回正负移动，偏移量减少，类似数组：20, -20, 18, -18 ..... 0
+
+					
+				for ( var i=20; i>0; i-=2 ) {
+					arr.push( i, -i );
+				}
+				arr.push(0);   //最后必须添加一个0,才会回到原位
+				
+				clearInterval( obj.shake );
+				obj.shake = setInterval(function (){
+					obj.style[attr] = pos + arr[num] + 'px';
+					num++;
+					if ( num === arr.length ) {
+						clearInterval( obj.shake );
+						endFn && endFn();
+						obj.shaked = false;
+					}
+				}, 50);
+			}
+
+			
+	</script>
+</head>
+<body>
+	<div>
+		<img src="29.imgs/1.jpg" alt="pic" />
+		<img src="29.imgs/2.jpg" alt="pic" />
+		<img src="29.imgs/3.jpg" alt="pic" />
+		<img src="29.imgs/4.jpg" alt="pic" />
+		<img src="29.imgs/5.jpg" alt="pic" />
+		<img src="29.imgs/6.jpg" alt="pic" />
+		<img src="29.imgs/7.jpg" alt="pic" />
+		<img src="29.imgs/8.jpg" alt="pic" />
+	</div>
+</body>
+</html>

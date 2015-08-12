@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,h3,ul,input,p,span{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		#wrap{
+			margin: 50px auto;
+			padding: 10px;
+			width: 700px;
+			border: 1px solid #000000;
+			font-size: 16px;
+			font-family: "Microsoft YaHei";
+			zoom: 1;
+		}
+		#wrap:after{ 
+			content:'';
+			display:block;
+			clear:both;}
+		#wrap h3{
+			font-size: 20px;
+			line-height: 40px;
+			text-align: center;
+		}
+
+		#wrap p{
+			
+			line-height: 25px;
+			margin-bottom: 15px;
+		}			
+		#list li{
+			margin-bottom: 15px;
+		}
+		#list li input{
+			float: left;
+			width: 180px;
+			height: 30px;
+			font-family: "Microsoft YaHei";
+			/*line-height: 30px;*/
+			text-align: left;
+			margin-bottom: 10px;
+			margin-right: 3px;
+			clear: left;
+
+		}
+		#list li span{
+			border: 1px solid #333;
+			float: left;
+			display: block;
+			width: 450px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 16px;
+			font-family: "Microsoft YaHei";
+			/*line-height: 30px;*/
+			text-align: left;
+			padding-left: 5px;
+
+		}
+	</style>
+	<script>
+		window.onload=function(){
+
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+			var oBtn3=document.getElementById('btn3');
+			var oBtn4=document.getElementById('btn4');
+
+			var oSp1=document.getElementById('sp1');
+			var oSp2=document.getElementById('sp2');
+			var oSp3=document.getElementById('sp3');
+			var oSp4=document.getElementById('sp4');
+
+			var arr1=[];
+			var arr2=[];
+			var arr3=[];
+			var arr4=[];
+
+			var max=0;
+
+			var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+
+		var length=arr.length;
+
+		// alert(isNaN('100px'));
+		// 1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+		oBtn1.onclick=function(){
+			oSp1.innerHTML='';
+			for (var i = 0; i < length; i++) {
+			if (typeof(arr[i])=='number'&&arr[i]==arr[i]) {
+				oSp1.innerHTML+="'"+arr[i]+"'"+", ";
+				}
+			}
+		}
+		// 	oBtn1.onclick=function(){
+		// 	oSp1.innerHTML='';
+		// 	for (var i = 0; i < length; i++) {
+		// 	if (!isNaN(arr[i])) {
+		// 		oSp1.innerHTML+="'"+arr[i]+"'"+", ";
+		// 		}
+		// 	}
+		// }
+
+
+		// 2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5 
+		oBtn2.onclick=function(){
+			oSp2.innerHTML='';
+			for (var i = 0; i < length; i++) {
+			if (Number(arr[i])||parseInt(arr[i])||parseFloat(arr[i])) {
+				oSp2.innerHTML+="'"+arr[i]+"'"+", ";
+			}
+		}
+	}
+
+		// 3、把转成数字以后，最大值判断出来：300
+		oBtn3.onclick=function(){
+			oSp3.innerHTML='';
+			for (var i = 0; i < length; i++) {
+			if (parseFloat(arr[i])>=max) {
+				max = parseFloat(arr[i]);
+			}
+		}
+			oSp3.innerHTML=max;
+
+		}
+
+
+		// 4、把 NaN 所在的位置找出来：1 14 17  19
+		oBtn4.onclick=function(){
+			oSp4.innerHTML='';
+			for (var i = 0; i < length; i++) {
+				if (typeof(arr[i])=='number'&&arr[i]!==arr[i]) {
+				oSp4.innerHTML+="'"+i+"'"+", ";
+				}
+		
+			}
+
+		}
+		}
+		
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<h3>数据类型与转换</h3>
+		<p>
+			<strong>数组中有以下数据：</strong> '100px',  'abc'-6,  [], -98765,  34,  -2,  0,  '300',  ,  function(){alert(1);},  null,  document,  [],  true, '200px'-30, '23.45元',  5,  Number('abc'),  function(){ alert(3); },  'xyz'-90 。
+		</p>
+		<ul id="list">
+			<li>
+				<input type="button" value="1.找到数据里所有的数字" id="btn1" /><span id="sp1"></span>
+			</li>
+			<li>
+				<input type="button" value="2.找到可以转成数字的数据" id="btn2" /><span id="sp2"></span>
+			</li>
+			<li>
+				<input type="button" value="3.转为数字以后最大的值为" id="btn3" /><span id="sp3"></span>
+			</li>
+			<li>
+				<input type="button" value="4.把 NaN 所在的位置找出来" id="btn4" /><span id="sp4"></span>
+			</li>
+		</ul>
+	</div>
+	
+	
+	
+	
+</body>
+</html>

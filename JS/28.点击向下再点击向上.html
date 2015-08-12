@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 50px;
+			height: 50px;
+			background: red;
+
+		}
+	</style>
+	<script src='doMove.js'></script>
+	<script>
+	window.onload=function(){
+		var str='';
+		var len=20;
+		var aDiv=document.getElementsByTagName('div');
+		var timer=null;
+		var num=0;
+		var finished=true;//表示一轮是否完成
+		var dir=true;//表示方向
+
+		for (var i = 0; i < len; i++) {
+			str += '<div style="width:50px; height:50px; background:red; position:absolute; top:0px; left:'+ i*60 +'px;"></div>';
+
+		}
+
+		document.body.innerHTML=str;
+		
+		document.onclick = function () {
+		
+		if ( !finished ) { return; } //判断如果前一轮没有完成就直接退出
+
+		finished = false; //新一轮开始所以finished为false，finished用于检测一轮是否完成，
+
+		clearInterval( timer );
+		timer = setInterval( function (){
+
+			doMove( aDiv[num], 'top', 23, dir?500:0, num == len - 1 ? function(){
+					finished = true; //最后一个aDiv落定的时候，finished才算完成，改为true
+					dir = !dir;
+				} : null);
+			num ++;
+
+			if ( num === len ) {
+				clearInterval( timer );
+				num = 0;
+			}
+			
+		}, 100 );
+		
+		};
+	}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

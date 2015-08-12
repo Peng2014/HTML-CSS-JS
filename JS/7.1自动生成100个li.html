@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#btn{
+			margin-bottom: 5px;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			position: relative;
+		}
+		li{
+			float: left;
+			/*margin-right: 8px;*/
+			list-style: none;
+			width: 50px;
+			height: 50px;
+			color: #000000;
+			border: 1px solid #000000;
+			line-height: 50px;
+			text-align: center;
+			font-size: 23px;
+			font-family: "Microsoft YaHei";
+			position: absolute;
+
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oUl=document.getElementById('ul');
+
+			var arrColor = ['red','yellow','blue'];
+			var length=arrColor.length;
+
+			oBtn.onclick=function(){
+				oUl.innerHTML='';
+				for (var i = 0; i < 100; i++) {
+					oUl.innerHTML+="<li>"+i+"</li>"
+
+				}
+				var aLi=document.getElementsByTagName('li');
+				var aLength=aLi.length;
+				for (var i = 0; i < aLength; i++) {
+					
+					aLi[i].style.background=arrColor[i%length];
+					aLi[i].style.left="60"*(i%10)+"px";
+					aLi[i].style.top=parseInt(i/10)*60+"px";
+				}
+				
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="自动生成100个LI" id="btn" />
+	<ul id="ul"></ul>
+</html>
